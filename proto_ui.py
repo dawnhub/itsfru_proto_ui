@@ -292,7 +292,7 @@ def cart_page():
     table_data = []
     total_price = 0
     total_discount_price = 0
-    table_data.append([None, "상품명", "판매가", "할인가"])
+    
     for item in st.session_state['cart']:
         fruit_name = item['fruit_name']
         sale_price = item['sale_price']
@@ -310,6 +310,12 @@ def cart_page():
         total_price += sale_price
         total_discount_price += discount_price
 
+    col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 1, 1])
+    col1.write("고른 과일") 
+    col2.write("상품명")
+    col3.write("판매가")
+    col4.write("할인가")
+    col5.write("삭제")
     # 테이블 표시
     for row in table_data:
         col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 1, 1])
