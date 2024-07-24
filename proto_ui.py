@@ -310,12 +310,14 @@ def cart_page():
         total_price += sale_price
         total_discount_price += discount_price
 
+    # 칼럼명명
     col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 1, 1])
     col1.write("과일") 
     col2.write("상품명")
     col3.write("판매가")
     col4.write("할인가")
     col5.write("삭제")
+
     # 테이블 표시
     for row in table_data:
         col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 1, 1])
@@ -392,7 +394,7 @@ def payment_complete_page():
         st.rerun()
 
 def my_info_page():
-    # 프로필 사진 (기존 코드 유지)
+    # 프로필 사진 (임시로 검은 사진)
     st.markdown(
         """
         <div style="display: flex; justify-content: center;"> 
@@ -424,7 +426,7 @@ def my_info_page():
             total_discount_price = payment['total_discount_price']
 
             payment_row = {
-                "id": idx+1,  # Add an id for each row
+                "id": idx+1,  
                 "구매 일시": purchase_date + '\n' + purchase_time,
                 "상품": product_info,
                 "구매 가격": total_discount_price
@@ -454,7 +456,6 @@ def my_info_page():
         st.write(styled_main_table.to_html(), unsafe_allow_html=True)
 
         st.subheader("상세 구매 내역 조회")
-        # Check if there are any selected rows
         selected_display = st.selectbox("", payment_df['구매 일시'].tolist())
         selected_id = payment_df['구매 일시'].tolist().index(selected_display)
 
