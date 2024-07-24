@@ -4,7 +4,6 @@ import random
 import datetime
 import pandas as pd
 from PIL import Image
-from st_aggrid import AgGrid, GridOptionsBuilder, DataReturnMode, GridUpdateMode
 
 st.set_page_config(layout="wide")
 
